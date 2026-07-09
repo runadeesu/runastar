@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='40' fill='%230b1020'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-size='90'%3E⭐%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>ルナスタ</title>
+</head>
+<body>
+  <main class="shell">
+    <section class="card hero" id="view-auth">
+      <div class="brand">ルナスタ</div>
+      <p class="subtitle">Phase 1 / ログイン・新規登録・自動ログイン・メール認証・ロビー</p>
+      <div class="tabs">
+        <button class="tab active" data-tab="login">ログイン</button>
+        <button class="tab" data-tab="register">新規登録</button>
+      </div>
+      <form id="auth-form" class="stack">
+        <input id="name" class="field hidden" type="text" placeholder="プレイヤー名" autocomplete="nickname" />
+        <input id="email" class="field" type="email" placeholder="メールアドレス" autocomplete="email" required />
+        <input id="password" class="field" type="password" placeholder="パスワード" autocomplete="current-password" required />
+        <button class="primary" type="submit" id="auth-submit">ログイン</button>
+      </form>
+      <p class="hint" id="auth-hint">Firebase 認証を接続すると本番運用できます。</p>
+    </section>
+
+    <section class="card hidden" id="view-verify">
+      <div class="brand">メール確認</div>
+      <p class="text">確認メールを送信しました。メール内のリンクを開いて認証を完了してください。</p>
+      <button class="primary" id="resend-verification">確認メールを再送</button>
+      <button class="ghost" id="signout-verify">ログアウト</button>
+    </section>
+
+    <section class="card hidden" id="view-lobby">
+      <div class="lobby-top">
+        <div>
+          <div class="brand small">ルナスタ</div>
+          <div class="meta" id="player-meta">Lv.1 / 0 XP</div>
+        </div>
+        <button class="ghost" id="signout">ログアウト</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><span>コイン</span><strong id="coins">1200</strong></div>
+        <div class="stat"><span>ジェム</span><strong id="gems">350</strong></div>
+      </div>
+
+      <div class="play-area">
+        <button class="play">▶ プレイ</button>
+        <div class="mode">マッチング / 3vs3 / バトルロイヤル は Phase 2 以降で追加</div>
+      </div>
+
+      <div class="menu-grid">
+        <button>ショップ</button>
+        <button>フレンド</button>
+        <button>クラン</button>
+        <button>実績</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
