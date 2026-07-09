@@ -51,8 +51,8 @@
       </div>
 
       <div class="play-area">
-        <button class="play">▶ プレイ</button>
-        <div class="mode">マッチング / 3vs3 / バトルロイヤル は Phase 2 以降で追加</div>
+        <button class="play" id="start-match">▶ 3vs3 を開始</button>
+        <div class="mode">Phase 2: キャラクター / 操作 / マップ / 3vs3 / オンライン同期</div>
       </div>
 
       <div class="menu-grid">
@@ -61,6 +61,38 @@
         <button>クラン</button>
         <button>実績</button>
       </div>
+    </section>
+
+    <section class="card hidden game-view" id="view-game">
+      <div class="game-top">
+        <div>
+          <div class="brand small">バトルフィールド</div>
+          <div class="meta" id="game-mode-label">3vs3 / クイックマッチ</div>
+        </div>
+        <button class="ghost" id="leave-match">ロビーへ戻る</button>
+      </div>
+
+      <div class="hud">
+        <div class="hud-box"><span>HP</span><strong id="hp-value">100</strong></div>
+        <div class="hud-box"><span>弾薬</span><strong id="ammo-value">6</strong></div>
+        <div class="hud-box"><span>敵チーム</span><strong id="enemy-value">3</strong></div>
+      </div>
+
+      <canvas id="game-canvas" width="960" height="540"></canvas>
+
+      <div class="touch-area">
+        <div class="stick left">
+          <div class="stick-ring"></div>
+          <div class="stick-knob" id="move-knob"></div>
+        </div>
+        <div class="touch-buttons">
+          <button id="attack-btn">攻撃</button>
+          <button id="dash-btn">回避</button>
+          <button id="skill-btn">スキル</button>
+        </div>
+      </div>
+
+      <div class="mode">スマホ / タブレット: タッチ、PC: キーボード、どちらもゲームパッド対応</div>
     </section>
   </main>
 
