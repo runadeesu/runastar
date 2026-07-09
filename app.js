@@ -6,6 +6,14 @@ const views = {
   battleRoyale: document.getElementById('view-battle-royale'),
   friends: document.getElementById('view-friends'),
   clan: document.getElementById('view-clan'),
+  shop: document.getElementById('view-shop'),
+  gacha: document.getElementById('view-gacha'),
+  pass: document.getElementById('view-pass'),
+  achievements: document.getElementById('view-achievements'),
+  ranking: document.getElementById('view-ranking'),
+  replay: document.getElementById('view-replay'),
+  voice: document.getElementById('view-voice'),
+  setting: document.getElementById('view-setting'),
   game: document.getElementById('view-game')
 };
 const tabs = [...document.querySelectorAll('.tab')];
@@ -32,6 +40,14 @@ const buttons = {
   friends: document.getElementById('open-friends'),
   clan: document.getElementById('open-clan'),
   br: document.getElementById('open-br-lobby'),
+  shop: document.getElementById('open-shop'),
+  gacha: document.getElementById('open-gacha'),
+  pass: document.getElementById('open-pass'),
+  achievements: document.getElementById('open-achievements'),
+  ranking: document.getElementById('open-ranking'),
+  replay: document.getElementById('open-replay'),
+  voice: document.getElementById('open-voice'),
+  setting: document.getElementById('open-setting'),
   matchQueue: document.getElementById('match-queue'),
   cancelMatch: document.getElementById('cancel-match'),
   startBrMatch: document.getElementById('start-br-match'),
@@ -39,7 +55,18 @@ const buttons = {
   sendFriendInvite: document.getElementById('send-friend-invite'),
   backFromFriends: document.getElementById('back-from-friends'),
   createClan: document.getElementById('create-clan'),
-  backFromClan: document.getElementById('back-from-clan')
+  backFromClan: document.getElementById('back-from-clan'),
+  buySkin: document.getElementById('buy-skin'),
+  backFromShop: document.getElementById('back-from-shop'),
+  rollGacha: document.getElementById('roll-gacha'),
+  backFromGacha: document.getElementById('back-from-gacha'),
+  claimPass: document.getElementById('claim-pass'),
+  backFromPass: document.getElementById('back-from-pass'),
+  backFromAchievements: document.getElementById('back-from-achievements'),
+  backFromRanking: document.getElementById('back-from-ranking'),
+  backFromReplay: document.getElementById('back-from-replay'),
+  backFromVoice: document.getElementById('back-from-voice'),
+  backFromSetting: document.getElementById('back-from-setting')
 };
 
 let mode = 'login';
@@ -52,6 +79,7 @@ function setMode(next){mode = next;tabs.forEach(t=>t.classList.toggle('active', 
 function syncLobby(session){document.getElementById('player-meta').textContent = `Lv.${session.level || 1} / ${session.xp || 0} XP`;document.getElementById('coins').textContent = session.coins ?? 1200;document.getElementById('gems').textContent = session.gems ?? 350;}
 function fakeLoad(){const saved = localStorage.getItem('runastar_session'); if(saved){const session = JSON.parse(saved); syncLobby(session); show('lobby'); return true;} return false;}
 function saveSession(session){ localStorage.setItem('runastar_session', JSON.stringify(session)); syncLobby(session); }
+function openPanel(name){ show(name); }
 
 function startGame(label='3vs3 / クイックマッチ'){
   document.getElementById('game-mode-label').textContent = label;
@@ -133,12 +161,20 @@ function logout(){ localStorage.removeItem('runastar_session'); show('auth'); }
 signout.addEventListener('click', logout); signoutVerify.addEventListener('click', logout);
 resendVerification.addEventListener('click', () => { hint.textContent = '確認メール再送のダミー処理です。Firebase 導入時に本実装へ置き換えます。'; });
 startMatch.addEventListener('click', () => startGame('3vs3 / クイックマッチ'));
-startBr.addEventListener('click', () => show('battleRoyale'));
+startBr.addEventListener('click', () => openPanel('battleRoyale'));
 leaveMatch.addEventListener('click', backToLobby);
-buttons.matchmaking.addEventListener('click', () => show('matchmaking'));
-buttons.friends.addEventListener('click', () => show('friends'));
-buttons.clan.addEventListener('click', () => show('clan'));
-buttons.br.addEventListener('click', () => show('battleRoyale'));
+buttons.matchmaking.addEventListener('click', () => openPanel('matchmaking'));
+buttons.friends.addEventListener('click', () => openPanel('friends'));
+buttons.clan.addEventListener('click', () => openPanel('clan'));
+buttons.br.addEventListener('click', () => openPanel('battleRoyale'));
+buttons.shop.addEventListener('click', () => openPanel('shop'));
+buttons.gacha.addEventListener('click', () => openPanel('gacha'));
+buttons.pass.addEventListener('click', () => openPanel('pass'));
+buttons.achievements.addEventListener('click', () => openPanel('achievements'));
+buttons.ranking.addEventListener('click', () => openPanel('ranking'));
+buttons.replay.addEventListener('click', () => openPanel('replay'));
+buttons.voice.addEventListener('click', () => openPanel('voice'));
+buttons.setting.addEventListener('click', () => openPanel('setting'));
 buttons.matchQueue.addEventListener('click', () => startGame('3vs3 / マッチメイキング'));
 buttons.cancelMatch.addEventListener('click', backToLobby);
 buttons.startBrMatch.addEventListener('click', () => startGame('バトルロイヤル / テスト'));
@@ -147,3 +183,14 @@ buttons.sendFriendInvite.addEventListener('click', () => { alert('招待コー�
 buttons.backFromFriends.addEventListener('click', backToLobby);
 buttons.createClan.addEventListener('click', () => { const clanName = document.getElementById('clan-name').value.trim() || 'Luna Clan'; alert(`${clanName} を作成しました（Phase 3 の土台）`); backToLobby(); });
 buttons.backFromClan.addEventListener('click', backToLobby);
+buttons.buySkin.addEventListener('click', () => { alert('スキンを購入しました（Phase 4 の土台）'); backToLobby(); });
+buttons.backFromShop.addEventListener('click', backToLobby);
+buttons.rollGacha.addEventListener('click', () => { alert('レア報酬を獲得しました（Phase 4 の土台）'); backToLobby(); });
+buttons.backFromGacha.addEventListener('click', backToLobby);
+buttons.claimPass.addEventListener('click', () => { alert('パス報酬を受け取りました（Phase 4 の土台）'); backToLobby(); });
+buttons.backFromPass.addEventListener('click', backToLobby);
+buttons.backFromAchievements.addEventListener('click', backToLobby);
+buttons.backFromRanking.addEventListener('click', backToLobby);
+buttons.backFromReplay.addEventListener('click', backToLobby);
+buttons.backFromVoice.addEventListener('click', backToLobby);
+buttons.backFromSetting.addEventListener('click', backToLobby);
