@@ -52,18 +52,57 @@
 
       <div class="play-area">
         <button class="play" id="start-match">▶ 3vs3 を開始</button>
-        <div class="mode">Phase 2: キャラクター / 操作 / マップ / 3vs3 / オンライン同期</div>
+        <button class="play secondary" id="start-br">⚔ バトルロイヤル</button>
+        <div class="mode">Phase 3: バトルロイヤル / マッチメイキング / フレンド招待 / クラン</div>
       </div>
 
       <div class="menu-grid">
-        <button>ショップ</button>
-        <button>フレンド</button>
-        <button>クラン</button>
-        <button>実績</button>
+        <button id="open-friends">フレンド招待</button>
+        <button id="open-clan">クラン</button>
+        <button id="open-matchmaking">マッチング</button>
+        <button id="open-br-lobby">BR ロビー</button>
       </div>
     </section>
 
-    <section class="card hidden game-view" id="view-game">
+    <section class="card hidden" id="view-matchmaking">
+      <div class="brand small">マッチメイキング</div>
+      <p class="text">ロビー検索中です。Phase 3 のための待機画面です。</p>
+      <div class="stack">
+        <button class="primary" id="match-queue">3vs3 を検索</button>
+        <button class="ghost" id="cancel-match">キャンセル</button>
+      </div>
+    </section>
+
+    <section class="card hidden" id="view-battle-royale">
+      <div class="brand small">バトルロイヤル</div>
+      <p class="text">100人規模のモードは、今はロビー表現のみです。</p>
+      <div class="stack">
+        <button class="primary" id="start-br-match">BR を開始</button>
+        <button class="ghost" id="back-from-br">戻る</button>
+      </div>
+    </section>
+
+    <section class="card hidden" id="view-friends">
+      <div class="brand small">フレンド招待</div>
+      <p class="text">招待コードを送ってパーティーを作る画面です。</p>
+      <input class="field" id="friend-code" placeholder="招待コード" />
+      <div class="stack">
+        <button class="primary" id="send-friend-invite">招待を送る</button>
+        <button class="ghost" id="back-from-friends">戻る</button>
+      </div>
+    </section>
+
+    <section class="card hidden" id="view-clan">
+      <div class="brand small">クラン</div>
+      <p class="text">クラン作成・参加の土台です。</p>
+      <input class="field" id="clan-name" placeholder="クラン名" />
+      <div class="stack">
+        <button class="primary" id="create-clan">クラン作成</button>
+        <button class="ghost" id="back-from-clan">戻る</button>
+      </div>
+    </section>
+
+    <section class="card hidden" id="view-game">
       <div class="game-top">
         <div>
           <div class="brand small">バトルフィールド</div>
